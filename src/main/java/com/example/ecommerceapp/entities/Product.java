@@ -48,7 +48,8 @@ public class Product {
     private Date lastUpdated;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "product_category_id")
     @JsonIgnore
     private ProductCategory productCategory;
+
 }
