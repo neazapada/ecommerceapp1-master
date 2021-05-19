@@ -1,0 +1,37 @@
+//h1 {
+//  background-color: green;
+//
+//}
+//
+//div {
+//  background-color: lightblue;
+//
+//}
+//
+//p {
+//  background-color: yellow;
+//
+//}
+
+table, th, td {
+  border-collapse: collapse;
+  width: 50%;
+  border-style: double;
+}
+td, th {
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px;
+}
+th{
+  background-color: lightgreen;
+  color: white;
+  opacity: 0.3;
+
+}
+tr:hover {background-color: blue;}
+
+//table {
+//  background-image: url("https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+//}
+
