@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+@CrossOrigin("http://localhost:4200")
 
 @RestController
 public class ProductController {
@@ -31,7 +32,7 @@ public class ProductController {
         return productService.findById(id);
     }
 
-    @PutMapping("api/product/{id}")
+    @PutMapping("api/products/{id}")
     public Product updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
         Optional<Product> productFromDatabase = Optional.ofNullable(productService.findById(id));
         if (productFromDatabase.isPresent()) {
