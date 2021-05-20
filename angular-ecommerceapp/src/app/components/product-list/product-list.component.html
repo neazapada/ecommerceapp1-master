@@ -1,52 +1,75 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="ISO-8859-1">
-  <title>Ecommerce App</title>
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-  <a th:href = "@{/showNewProductForm}" class="btn btn-primary btn-sm mb-3"> Add Product</a>
-  <table class = "table table-striped table-responsive-md">
-  <thead>
-    <tr>
-      <th> name </th>
-      <th> description </th>
-      <th> unitPrice </th>
-      <th> sku </th>
-      <th> imageUrl </th>
-      <th> active </th>
-      <th> unitsInStock </th>
-      <th> dateCreated </th>
-      <th> lastUpdate </th>
-    </tr>
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="ISO-8859-1">-->
+<!--  <title>Ecommerce App</title>-->
+<!--  <link rel="stylesheet"-->
+<!--        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <a th:href = "@{/showNewProductForm}" class="btn btn-primary btn-sm mb-3"> Add Product</a>-->
+<!--  <table class = "table table-striped table-responsive-md">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th> name </th>-->
+<!--      <th> description </th>-->
+<!--      <th> unitPrice </th>-->
+<!--      <th> sku </th>-->
+<!--      <th> imageUrl </th>-->
+<!--      <th> active </th>-->
+<!--      <th> unitsInStock </th>-->
+<!--      <th> dateCreated </th>-->
+<!--      <th> lastUpdate </th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--    <tr *ngFor="let tempProduct of products">-->
+<!--      <td>-->
+<!--        {{tempProduct.name}}-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        {{tempProduct.description}}-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        {{tempProduct.unitPrice | currency:'USD'}}-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        {{tempProduct.sku}}-->
+<!--      </td><td>-->
+<!--        {{tempProduct.imageUrl}}-->
+<!--      </td><td>-->
+<!--        {{tempProduct.active}}-->
+<!--      </td><td>-->
+<!--        {{tempProduct.unitsInStock}}-->
+<!--      </td><td>-->
+<!--        {{tempProduct.dateCreated}}-->
+<!--      </td><td>-->
+<!--        {{tempProduct.lastUpdate}}-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<table class="table">
+
+  <thead class="thead-dark">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Units in Stock</th>
+  </tr>
   </thead>
-    <tr *ngFor="let tempProduct of products">
-      <td>
-        {{tempProduct.name}}
-      </td>
-      <td>
-        {{tempProduct.description}}
-      </td>
-      <td>
-        {{tempProduct.unitPrice | currency:'USD'}}
-      </td>
-      <td>
-        {{tempProduct.sku}}
-      </td><td>
-        {{tempProduct.imageUrl}}
-      </td><td>
-        {{tempProduct.active}}
-      </td><td>
-        {{tempProduct.unitsInStock}}
-      </td><td>
-        {{tempProduct.dateCreated}}
-      </td><td>
-        {{tempProduct.lastUpdate}}
-      </td>
-    </tr>
-  </table>
-</div>
-</body>
-</html>
+
+  <tbody>
+  <tr *ngFor="let tempProduct of products">
+    <td class="align-middle">
+      <img src="{{tempProduct.imageUrl}}" height="50"/>
+    </td>
+    <td class="align-middle">{{ tempProduct.name}}</td>
+    <td class="align-middle">{{ tempProduct.unitPrice | currency:'USD'}}</td>
+    <td class="align-middle">{{ tempProduct.unitsInStock}}</td>
+  </tr>
+
+  </tbody>
+</table>
