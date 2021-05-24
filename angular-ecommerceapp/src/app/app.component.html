@@ -11,21 +11,14 @@
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
           <li>
-            <a href="#">Books</a>
+            <a routerLink="/categories/1" routerLinkActive="active-link">Books</a>
           </li>
           <li>
-            <a href="#">Coffee Mugs</a>
-          </li>
-          <li>
-            <a href="#">Mouse Pads</a>
-          </li>
-          <li>
-            <a href="#">Luggage Tags</a>
+            <a routerLink="/categories/2" routerLinkActive="active-link">Coffee Mugs</a>
           </li>
         </ul>
       </nav>
     </div>
-
   </aside>
   <!-- END MENU SIDEBAR-->
   <!-- PAGE CONTAINER-->
@@ -37,15 +30,16 @@
           <div class="header-wrap">
             <form class="form-header" onsubmit="return false;" method="GET">
               <input class="au-input au-input-xl" type="text" name="search"
-                     placeholder="Search for data ..." />
+                     placeholder="Search for data ..."/>
               <button class="au-btn-submit" type="submit">
                 Search
               </button>
             </form>
             <div class="cart-area d-n">
               <a href="shopping-detail.html">
-                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart"
-                                                                   aria-hidden="true"></i>
+                <div class="total">19.22 <span> 2</span></div>
+                <i class="fa fa-shopping-cart"
+                   aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -55,6 +49,7 @@
     </header>
     <!-- END HEADER DESKTOP-->
     <!-- MAIN CONTENT-->
-    <app-product-list></app-product-list>
-</div>
+    <!--    <app-product-list></app-product-list>-->
+    <router-outlet></router-outlet>
   </div>
+</div>

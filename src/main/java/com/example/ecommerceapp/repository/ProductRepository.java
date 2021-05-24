@@ -4,7 +4,10 @@ import com.example.ecommerceapp.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
+
+
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Product findById(long id);
+    List<Product> findByCategoryId(long id);
 }

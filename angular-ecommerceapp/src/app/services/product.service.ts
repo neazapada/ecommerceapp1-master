@@ -9,9 +9,8 @@ import {Product} from "../common/product";
 export class ProductService {
 
   constructor(private httpClient:HttpClient) { }
-  getProductList(): Observable<GetResponse>{
-    return this.httpClient.get<GetResponse>("http://localhost:8080/api/products") }
-}
+  getProductList(categoryId: number): Observable<GetResponse>{
+    return this.httpClient.get<GetResponse>(`http://localhost:8080/api/products?category_id=${categoryId}`) }}
 interface GetResponse {
   products: {
     products: Product[]

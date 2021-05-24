@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -22,7 +23,6 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Product> productList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private Set<Product> products;
 }

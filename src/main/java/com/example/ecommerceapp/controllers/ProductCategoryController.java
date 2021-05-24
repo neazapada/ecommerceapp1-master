@@ -24,7 +24,7 @@ public class ProductCategoryController {
     }
 
     @GetMapping("api/categories")
-    public List<ProductCategory> findAllCategories() {
+    public List<ProductCategory> findAllCategories(@RequestParam("category_id") long id) {
         return productCategoryService.findAllCategories();
     }
 
