@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../common/product";
@@ -8,9 +8,18 @@ import {Product} from "../common/product";
 })
 export class ProductService {
 
-  constructor(private httpClient:HttpClient) { }
-  getProductList(categoryId: number): Observable<GetResponse>{
-    return this.httpClient.get<GetResponse>(`http://localhost:8080/api/products?category_id=${categoryId}`) }}
+  constructor(private httpClient: HttpClient) {
+  }
+
+  getProductList(categoryId: number): Observable<GetResponse> {
+    return this.httpClient.get<GetResponse>(`http://localhost:8080/api/products?category_id=${categoryId}`)
+  }
+
+
+  listProductCategories() {
+    return this.httpClient.get('http://localhost:8080/api/categories');
+  }
+}
 interface GetResponse {
   products: {
     products: Product[]

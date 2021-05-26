@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin("http://localhost:4200")
 @RestController
 public class ProductCategoryController {
 
@@ -24,7 +24,7 @@ public class ProductCategoryController {
     }
 
     @GetMapping("api/categories")
-    public List<ProductCategory> findAllCategories(@RequestParam("category_id") long id) {
+    public List<ProductCategory> findAllCategories() {
         return productCategoryService.findAllCategories();
     }
 

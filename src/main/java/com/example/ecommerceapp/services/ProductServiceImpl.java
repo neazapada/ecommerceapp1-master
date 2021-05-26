@@ -2,6 +2,10 @@ package com.example.ecommerceapp.services;
 
 import com.example.ecommerceapp.entities.Product;
 import com.example.ecommerceapp.repository.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,5 +54,18 @@ public class ProductServiceImpl implements ProductService {
 //        }
 //        return returnedList;
         return productRepository.findByCategoryId(id);
+    }
+
+    @Override
+    public List<Product> getAllProducts(Integer pageNo, Integer pageSize, String sortBy) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Product> pagedResult = productRepository.findAll(paging);
+
+        if (pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Product>();
+        }
     }
 }
