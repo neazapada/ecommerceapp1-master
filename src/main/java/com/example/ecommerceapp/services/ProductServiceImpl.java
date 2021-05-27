@@ -55,6 +55,10 @@ public class ProductServiceImpl implements ProductService {
 //        return returnedList;
         return productRepository.findByCategoryId(id);
     }
+    @Override
+    public List<Product> findByName(String name) {
+        return productRepository.findByNameContaining(name);
+    }
 
     @Override
     public List<Product> getAllProducts(Integer pageNo, Integer pageSize, String sortBy) {

@@ -50,6 +50,11 @@ public class ProductController {
         return productService.update(product);
     }
 
+    @GetMapping("/products/search")
+    public List<Product> findProductsByName(@RequestParam("keyword") String keyword){
+        return productService.findByName(keyword);
+    }
+
     @DeleteMapping("api/products/{id}")
     public void deleteProductById(@PathVariable("id") long id) {
         productService.deleteProduct(id);

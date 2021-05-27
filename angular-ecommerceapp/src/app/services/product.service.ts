@@ -19,9 +19,13 @@ export class ProductService {
   listProductCategories() {
     return this.httpClient.get('http://localhost:8080/api/categories');
   }
+  searchProduct(keyword: string) {
+    return this.httpClient.get(`http://localhost:8080/products/search?keyword=${keyword}`)
+  }
 }
 interface GetResponse {
   products: {
     products: Product[]
   };
+
 }

@@ -21,4 +21,6 @@ public interface ProductService {
 
     List<Product> getAllProducts(Integer pageNo, Integer pageSize, String sortBy);
 
+    List<Product> findByName(String name);
+
 }
