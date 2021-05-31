@@ -1,6 +1,7 @@
 package com.example.ecommerceapp.services;
 
 import com.example.ecommerceapp.entities.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
@@ -17,7 +18,7 @@ public interface ProductService {
 
     void deleteProduct(long id);
 
-    List<Product> findByCategoryId(long id);
+    Page<Product> findByCategoryId(long id, Pageable pageable);
 
     List<Product> getAllProducts(Integer pageNo, Integer pageSize, String sortBy);
 

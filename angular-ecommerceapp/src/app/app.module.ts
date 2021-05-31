@@ -8,8 +8,11 @@ import {ProductService} from "./services/product.service";
 import {RouterModule, Routes} from "@angular/router";
 import {SearchComponent} from './components/search/search.component';
 import {ProductCategoryMenuComponent} from "./components/product-category-menu/product-category-menu.component";
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
+  {path: 'products/:id', component:ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
@@ -23,12 +26,15 @@ const routes: Routes = [
     AppComponent,
     ProductListComponent,
     ProductCategoryMenuComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
+
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

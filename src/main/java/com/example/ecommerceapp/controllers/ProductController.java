@@ -2,6 +2,8 @@ package com.example.ecommerceapp.controllers;
 
 import com.example.ecommerceapp.entities.Product;
 import com.example.ecommerceapp.services.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class ProductController {
     }
 
     @GetMapping("api/products")
-    public List<Product> findAllProducts(@RequestParam("category_id") long id) {
-        return productService.findByCategoryId(id);
+    public Page<Product> findAllProducts(@RequestParam("category_id") long id, Pageable pageable) {
+        return productService.findByCategoryId(id, pageable);
     }
 
     @GetMapping("api/products/{id}")

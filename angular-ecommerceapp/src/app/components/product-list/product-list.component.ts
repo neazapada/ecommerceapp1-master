@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
+import {Product} from "../../common/product";
 
 @Component({
   selector: 'app-product-list',
@@ -9,9 +10,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  public products;
-  public currentCategoryId: number;
-  public isSearchMode: boolean | undefined;
+  public products: Product[] = [];
+  public currentCategoryId: number = 1;
+  public isSearchMode: boolean | undefined = false;
+  public totalElements = 0;
+  public size = 10;
+  public number = 1;
+  public previousCategoryId = 1;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
@@ -29,12 +34,22 @@ export class ProductListComponent implements OnInit {
     } else {
       this.currentCategoryId = 1;
     }
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-        console.log(data);
-        this.products = data;
-      }
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.number = 1;
+    }
+    this.previousCategoryId = this.currentCategoryId;
+    this.productService.getListPaginated(this.currentCategoryId,this.number-1,this.size).subscribe(this.getResult()
     );
+  }
+
+  getResult(){
+    return data => {
+      console.log("data from result" + JSON.stringify(data));
+      this.products= data.content;
+      this.number = data.number + 1;
+      this.size = data.size;
+      this.totalElements = data.totalElements;
+    }
   }
 
   searchProductsByName() {
@@ -56,6 +71,11 @@ export class ProductListComponent implements OnInit {
     } else {
       this.listProducts();
     }
+  }
+  updatePageSize(pageSize: number) {
+    this.size = pageSize;
+    this.number = 1;
+    this.listProducts();
   }
 
 }
