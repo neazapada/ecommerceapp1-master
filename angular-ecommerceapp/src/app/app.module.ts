@@ -10,6 +10,7 @@ import {SearchComponent} from './components/search/search.component';
 import {ProductCategoryMenuComponent} from "./components/product-category-menu/product-category-menu.component";
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 const routes: Routes = [
   {path: 'products/:id', component:ProductDetailsComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,

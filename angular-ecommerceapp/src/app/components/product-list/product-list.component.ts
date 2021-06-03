@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../../common/product";
+import {CartService} from "../../services/cart.service";
+import {CartItem} from "../../common/cart-item";
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +20,7 @@ export class ProductListComponent implements OnInit {
   public number = 1;
   public previousCategoryId = 1;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -38,14 +40,14 @@ export class ProductListComponent implements OnInit {
       this.number = 1;
     }
     this.previousCategoryId = this.currentCategoryId;
-    this.productService.getListPaginated(this.currentCategoryId,this.number-1,this.size).subscribe(this.getResult()
+    this.productService.getListPaginated(this.currentCategoryId, this.number - 1, this.size).subscribe(this.getResult()
     );
   }
 
-  getResult(){
+  getResult() {
     return data => {
       console.log("data from result" + JSON.stringify(data));
-      this.products= data.content;
+      this.products = data.content;
       this.number = data.number + 1;
       this.size = data.size;
       this.totalElements = data.totalElements;
@@ -72,10 +74,16 @@ export class ProductListComponent implements OnInit {
       this.listProducts();
     }
   }
+
   updatePageSize(pageSize: number) {
     this.size = pageSize;
     this.number = 1;
     this.listProducts();
+  }
+
+  addToCart(product: Product) {
+    const cartItem = new CartItem(product);
+    this.cartService.addToCart(cartItem);
   }
 
 }
